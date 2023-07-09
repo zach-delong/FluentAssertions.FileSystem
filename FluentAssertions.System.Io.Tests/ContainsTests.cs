@@ -1,9 +1,7 @@
 using System.IO.Abstractions.TestingHelpers;
-using System.IO.Abstractions.TestingHelpers.FluentAssertions;
-using FluentAssertions;
 using FluentAssertions.Execution;
 
-namespace Tests;
+namespace FluentAssertions.FileSystem.Tests;
 
 public class ContainsTests
 {

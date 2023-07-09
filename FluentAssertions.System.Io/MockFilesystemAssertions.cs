@@ -1,8 +1,8 @@
-using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
+using System.IO.Abstractions.TestingHelpers;
 
-namespace System.IO.Abstractions.TestingHelpers.FluentAssertions;
+namespace FluentAssertions.FileSystem;
 
 public class MockFileSystemAssertions : ReferenceTypeAssertions<MockFileSystem, MockFileSystemAssertions>
 {

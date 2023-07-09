@@ -1,6 +1,6 @@
 using System.IO.Abstractions.TestingHelpers;
 
-namespace System.IO.Abstractions.TestingHelpers.FluentAssertions;
+namespace FluentAssertions.FileSystem;
 
 public static class MockFileSystemExtensions
 {

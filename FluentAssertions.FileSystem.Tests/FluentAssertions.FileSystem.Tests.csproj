@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FluentAssertions.System.Io\FluentAssertions.System.Io.csproj" />
+    <ProjectReference Include="..\FluentAssertions.FileSystem\FluentAssertions.FileSystem.csproj" />
   </ItemGroup>
 
 </Project>

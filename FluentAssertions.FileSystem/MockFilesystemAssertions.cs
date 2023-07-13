@@ -8,9 +8,15 @@ public class MockFileSystemAssertions : ReferenceTypeAssertions<MockFileSystem, 
 {
     protected override string Identifier => "file system";
 
-    public MockFileSystemAssertions(MockFileSystem fileSystem) : base(fileSystem)
-    { }
+    public MockFileSystemAssertions(MockFileSystem fileSystem) : base(fileSystem) { }
 
+    ///<summary>
+    /// Given a path to a file or directory assert that it should exist in the file system.
+    ///</summary>
+    ///<param name="path">A file system path to a file or directory that should exist.</param>
+    ///<param name="because">An explanation of why something might have failed</param>
+    ///<param name="args">Arguments to format into the because description</param>
+    ///<returns>An Constraint so that other constraints can be chained.</returns>
     [CustomAssertion]
     public AndConstraint<MockFileSystemAssertions> Contain(
 	string? path,
@@ -37,6 +43,13 @@ public class MockFileSystemAssertions : ReferenceTypeAssertions<MockFileSystem, 
         return new AndConstraint<MockFileSystemAssertions>(this);
     }
 
+    ///<summary>
+    /// Given a path to a particular directory, assert that it should exist in the file system.
+    ///</summary>
+    ///<param name="path">A file system path to a directory that should exist.</param>
+    ///<param name="because">An explanation of why something might have failed</param>
+    ///<param name="args">Arguments to format into the because description</param>
+    ///<returns>An Constraint so that other constraints can be chained.</returns>
     [CustomAssertion]
     public AndConstraint<MockFileSystemAssertions> ContainDirectory(
 	string? path,
@@ -64,6 +77,13 @@ public class MockFileSystemAssertions : ReferenceTypeAssertions<MockFileSystem, 
         return new AndConstraint<MockFileSystemAssertions>(this);
     }
 
+    ///<summary>
+    /// Given a path to a particular file, assert that it should not exist in the file system.
+    ///</summary>
+    ///<param name="path">A file system path to a file that should not exist.</param>
+    ///<param name="because">An explanation of why something might have failed</param>
+    ///<param name="args">Arguments to format into the because description</param>
+    ///<returns>An Constraint so that other constraints can be chained.</returns>
     [CustomAssertion]
     public AndConstraint<MockFileSystemAssertions> NotContainFile(
     string path)
@@ -73,6 +93,15 @@ public class MockFileSystemAssertions : ReferenceTypeAssertions<MockFileSystem, 
         return new AndConstraint<MockFileSystemAssertions>(this);
     }
 
+
+    ///<summary>
+    /// Given a path to a file, assuming it exists in the file system, assert that it should have specific contents.
+    ///</summary>
+    ///<param name="path">A file system path to a file assumed to exist.</param>
+    ///<param name="expectedContents">A string containing the expected output contents of the file.</param>
+    ///<param name="because">An explanation of why something might have failed</param>
+    ///<param name="args">Arguments to format into the because description</param>
+    ///<returns>An Constraint so that other constraints can be chained.</returns>
     [CustomAssertion]
     public AndConstraint<MockFileSystemAssertions> FileHasContents(string path, string expectedContents, string becauseReasons = "", params object[] becauseArgs)
     {
@@ -89,6 +118,15 @@ public class MockFileSystemAssertions : ReferenceTypeAssertions<MockFileSystem, 
         return new AndConstraint<MockFileSystemAssertions>(this);
     }
 
+
+    ///<summary>
+    /// Given a path to a particular file, assert that file should exist and that it should have specific contents.
+    ///</summary>
+    ///<param name="path">A file system path to a file that should exist.</param>
+    ///<param name="expectedContents">A string containing the expected output contents of the file.</param>
+    ///<param name="because">An explanation of why something might have failed</param>
+    ///<param name="args">Arguments to format into the because description</param>
+    ///<returns>An Constraint so that other constraints can be chained.</returns>
     [CustomAssertion]
     public AndConstraint<MockFileSystemAssertions> FileExistsWithContents(string path,
                                                                           string expectedContents,
@@ -99,6 +137,13 @@ public class MockFileSystemAssertions : ReferenceTypeAssertions<MockFileSystem, 
 	    .And.FileHasContents(path, expectedContents, becauseReasons, becauseArgs);
     }
 
+    ///<summary>
+    /// Asserts that a specific number of files exist in the mock file system
+    ///</summary>
+    ///<param name="expectedFileCount">The integer number representing the expected number of files in the file system.</param>
+    ///<param name="because">An explanation of why something might have failed</param>
+    ///<param name="becauseArgs">Arguments to format into the because description</param>
+    ///<returns>An Constraint so that other constraints can be chained.</returns>
     [CustomAssertion]
     public AndConstraint<MockFileSystemAssertions> HaveFileCount(int expectedFileCount, string because = "", params object[] becauseArgs)
     {

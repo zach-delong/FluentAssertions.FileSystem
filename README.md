@@ -10,20 +10,21 @@ The Should method returns an assertions object that has several helpful assertio
 
 ```csharp
 using System.IO.Abstractions.TestingHelpers;
-using System.IO.Abstractions;
+using FluentAssertions.Filesystem;
 
-public class ContainDirectoryTests 
+public class ExampleUsage 
 {
-    public void foo()
+    public void Example()
     {
         var mockFileSystem = new MockFileSystem();
 
         mockFileSystem
-	    .AddDirectory("example_directory");
+			.AddDirectory("example_directory");
 
         mockFileSystem
             .Should()
 			.ContainDirectory("example_directory");
     }
+}
 ```
 See the provided unit tests for more examples, and the comments in `MockFileSystemAssertions` for full details about what assertions are available and how to use them.
